@@ -5,7 +5,6 @@ import java.sql.*;
 public class StepRepo {
 
     private final Connection conn;
-
     public StepRepo() {
         this.conn = DBManager.getConnection();
     }

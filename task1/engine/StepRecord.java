@@ -1,7 +1,6 @@
 package task1.engine;
 
 public class StepRecord {
-
     public final String workflowId;
     public final String stepKey;
     public final String status;

@@ -12,7 +12,6 @@ public class DBManager {
         if (connection == null) {
             try {
                 Class.forName("org.sqlite.JDBC");
-
                 connection = DriverManager.getConnection("jdbc:sqlite:onboarding.db");
                 init();
             } catch (Exception e) {
