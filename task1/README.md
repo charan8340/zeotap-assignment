@@ -1,6 +1,4 @@
-#Assignment 1: Durable Execution Engine 
-
----
+# Assignment 1: Durable Execution Engine 
 
 ## Overview
 
