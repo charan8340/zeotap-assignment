@@ -23,6 +23,25 @@ The objective of this assignment is to design and build a system that:
 ## High-Level Design
 
 ```
+                ┌────────────┐
+                │ Input File │  (CSV / JSONL)
+                └─────┬──────┘
+                      │
+                ┌─────▼──────┐
+                │  Producer  │  (single thread, streaming)
+                └─────┬──────┘
+                      │  fan-out
+        ┌─────────────┼────────────────┬────────────────┬──────────────┐
+        ▼             ▼                ▼                ▼              ▼
+  BlockingQueue   BlockingQueue   BlockingQueue   BlockingQueue   (bounded)
+    (REST)           (gRPC)          (MQ)            (DB)
+        │             │                │                │
+   Consumer(s)    Consumer(s)     Consumer(s)     Consumer(s)
+        │             │                │                │
+   Transformer     Transformer      Transformer      Transformer
+        │             │                │                │
+   REST Sink       gRPC Sink       MQ Sink          DB Sink
+
 
 Input File
     |
