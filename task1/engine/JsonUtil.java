@@ -11,7 +11,6 @@ public class JsonUtil {
         return obj.toString();
     }
 
-    @SuppressWarnings("unchecked")
     public static <T> T deserialize(String value, Class<T> type) {
         if (value == null) return null;
 
