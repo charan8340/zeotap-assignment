@@ -2,8 +2,8 @@ package task1.engine;
 
 import java.util.concurrent.atomic.AtomicLong;
 
+//Durable workflow context info
 public class DurableContext {
-
     private final String workflowId;
     private final AtomicLong sequence = new AtomicLong(0);
 
