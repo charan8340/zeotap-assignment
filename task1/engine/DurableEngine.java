@@ -3,7 +3,6 @@ package task1.engine;
 import java.util.concurrent.Callable;
 
 public class DurableEngine {
-
     private final DurableContext context;
     private final StepRepo repo;
 
