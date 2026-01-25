@@ -1,0 +1,31 @@
+Explain the assignment requirements in simple terms and clarify what exactly the evaluators are looking for in submissions.
+
+How can this fan-out engine be implemented practically, and what Java libraries are typically required, without writing any code?
+
+Is it necessary to use any frameworks for this problem, or can it be solved using core Java only?
+
+What is Mockito used for, and why is it important in backend system testing?
+
+Where and how should CompletableFuture, ExecutorService, or Virtual Threads be applied correctly in this design to avoid race conditions?
+
+What role does a BlockingQueue play in this assignment, and how does it help with backpressure and memory safety?
+
+How should dynamic throttling and retry logic be implemented in a clean and production-ready way?
+
+What is the practical implementation of concurrency in this system, and how do multiple threads operate independently across sinks?
+
+What exactly is an orchestrator in this system, and how does it coordinate producers, consumers, and sinks?
+
+How should configuration be structured so that sinks, rate limits, and file paths are not hardcoded?
+
+How does this design ensure streaming and guarantee low memory usage even for very large input files?
+
+How can the application be tested with a small heap size like -Xmx512m to prove streaming behavior?
+
+How can ExecutorService be used in a simple and interview-friendly way instead of complex concurrency constructs?
+
+What unit tests should be written for transformers, and what integration tests are expected for the orchestrator?
+
+How can we demonstrate zero data loss and ensure every record is accounted for as success or failure?
+
+How should metrics like throughput, processed records, and per-sink success/failure be collected and reported periodically?
