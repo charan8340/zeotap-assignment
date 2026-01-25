@@ -1,0 +1,41 @@
+Explain what “durable execution” really means in system design terms and how it differs from simply restarting an application after a crash.
+
+How can users write normal native Java code with loops and conditionals and still make it durable without using a DSL or framework magic?
+
+Show a simple mock example of how a user writes workflow code and how the durable engine intercepts execution internally.
+
+How does replay-based durability work when the program restarts from the beginning instead of resuming from memory?
+
+What is the difference between DBOS / Temporal and this assignment’s durable execution engine, and where are we intentionally simplifying?
+
+What does “durable” mean exactly in the context of workflows and side effects?
+
+If a workflow has multiple loops and the application crashes after one loop, how does the system know what to skip and what to execute again?
+
+Why do we need a sequence ID or logical clock, and why is a step name alone not sufficient?
+
+How does AtomicLong work internally and why is it safe for generating unique sequence IDs under concurrency?
+
+How does AtomicLong behave when multiple steps are executed in parallel threads?
+
+Why do we need to serialize and deserialize step results instead of just storing a completed flag?
+
+What is the correct database schema for storing step execution state, and why does each column exist?
+
+What is a zombie step and why is it impossible to fully eliminate in durable execution systems?
+
+Why does using a finally block not actually solve the zombie step problem?
+
+How do timestamps help with zombie step detection, and what guarantees do they NOT provide?
+
+How should concurrent step execution be handled safely when using SQLite as the persistence layer?
+
+Why does Java require an explicit JDBC driver even if SQLite is installed on the local system?
+
+Why does javac filename.java work for simple programs but not for multi-package projects with external libraries?
+
+How do external libraries work in Java, and why must they be explicitly added to the classpath during compile and runtime?
+
+What are the tradeoffs of restricting step return types to simple serializable values instead of arbitrary objects?
+
+How should the database be reset safely to demonstrate durability without breaking the workflow engine design?
