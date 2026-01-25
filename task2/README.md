@@ -1,5 +1,4 @@
-# Zeotap Backend Engineering Assignment
-## High-Throughput Fan-Out & Transformation Engine
+# Assignement 2: High-Throughput Fan-Out & Transformation Engine
 
 ---
 
