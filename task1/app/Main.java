@@ -13,6 +13,6 @@ public class Main {
 
         EmployeeOnboardingWorkflow.run(engine);
 
-        System.out.println("\n=== Workflow Finished ===");
+        System.out.println("Workflow Finished");
     }
 }
