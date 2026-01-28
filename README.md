@@ -1,14 +1,14 @@
-# Branch Customer–Agent Chat Application
+# Zeotap Backend Engineering Assignments
 
-This repository contains a **customer–agent chat application** built as part of the Branch assignment.
+This repository contains **both backend engineering assignments** completed as part of the Zeotap assignment.
 
-The application is implemented as a **self-contained full-stack project** with its own frontend, backend, database, container configuration, and documentation.
+Each assignment is implemented as a **self-contained project** with its own source code, tests, configuration, and detailed documentation.
 
 The intent of this repository is to demonstrate:
-- Full-stack system design
-- Real-time customer–agent interaction
-- Containerized development workflows
-- Clean API design and persistence handling
+- Systems design thinking
+- Concurrency correctness
+- Streaming & memory-safe processing
+- Durability and fault tolerance
 
 ---
 
@@ -16,164 +16,67 @@ The intent of this repository is to demonstrate:
 
 ```
 
-branch-chat-app/
-├── backend/           → Node.js (Express) API & MongoDB integration
-├── frontend/          → React (Vite) customer & agent chat UI
-├── docker-compose.yml → Multi-container setup
-└── README.md
+.
+├── task1/   → Assignment 1: Durable Execution Engine
+├── task2/   → Assignment 2: High-Throughput Fan-Out & Transformation Engine
+└── README.md 
 
-````
 
-Each major component contains:
+```
+
+Each folder contains:
 - A complete implementation
-- Clear separation of responsibilities
-- Configuration suitable for Docker-based execution
+- A dedicated `README.md` explaining architecture and design decisions
+- Sample workflows / inputs
+- Tests and prompts used during development
 
 ---
 
-## Application Overview
+## Assignment 1: Durable Execution Engine (`task1/`)
 
 **Problem solved:**  
-Build a simple customer–agent chat system where customers can initiate conversations and agents can respond through a dedicated interface.
+Build a native durable execution engine that allows developers to write *normal Java code* (loops, conditionals, concurrency) while ensuring completed side effects are **not re-executed after crashes**.
 
-The application consists of:
-- A customer-facing chat UI
-- An agent-facing chat UI
-- A backend API to manage message flow
-- MongoDB for persistent message storage
+**Key highlights:**
+- Replay-based durability (no checkpoints, no DSLs)
+- Persistent memoization using SQLite
+- Automatic sequence ID generation for loops and concurrency
+- Zombie step detection and deterministic retries
+- Parallel step execution with thread-safe persistence
 
-All components run together using Docker Compose.
-
----
-
-## Tech Stack
-
-- **Frontend:** React (Vite)
-- **Backend:** Node.js (Express)
-- **Database:** MongoDB
-- **Containerization:** Docker & Docker Compose
+**Detailed design, code, and execution instructions are documented inside `task1/README.md`.**
 
 ---
 
-## Prerequisites
+## Assignment 2: High-Throughput Fan-Out & Transformation Engine (`task2/`)
 
-Only Docker is required.
+**Problem solved:**  
+Design a streaming data pipeline that reads very large files (100GB+), transforms records into sink-specific formats, and dispatches them concurrently without overwhelming downstream systems.
 
-### Install Docker
+**Key highlights:**
+- True streaming ingestion (constant memory usage)
+- Bounded queues with backpressure
+- Sink-specific transformations using Strategy pattern
+- Config-driven throttling and retry logic
+- Parallel sink processing with clear observability
+- Designed to run safely with `-Xmx512m`
 
-- **Windows / macOS:** https://www.docker.com/products/docker-desktop  
-- **Linux:** https://docs.docker.com/engine/install/
+**Full architecture, configuration, and testing details are available in `task2/README.md`.**
 
-Verify installation:
+## Guide To view the assignments
 
-```bash
-docker --version
-docker compose version
-````
-
----
-
-## Getting the Project
-
-### Clone the Repository
-
-```bash
-git clone https://github.com/charan8340/branch-chat-application
-cd branch-chat-app
-```
-
-### Or Download ZIP
-
-Download the ZIP from GitHub and extract it locally.
-
----
-
-## Build and Run the Application
-
-Build and start all services:
-
-```bash
-docker compose up --build -d
-```
-
----
-
-## Application Access
-
-### Frontend
-
-* **Customer Chat UI:**
-  [http://localhost:5173](http://localhost:5173)
-  Customers can enter their name and number and start chatting with an agent.
-
-* **Agent Chat UI:**
-  [http://localhost:5173/agent](http://localhost:5173/agent)
-  Agents can respond to incoming customer messages.
-
-### Backend API
-
-* **Base URL:**
-  [http://localhost:4000](http://localhost:4000)
-
----
-
-## API Usage (Postman / cURL)
-
-### Send Message
-
-**Endpoint:**
-
-```
-POST http://localhost:4000/api/message
-```
-
-**Request Body Example:**
-
-```json
-{
-  "customerId": 87456,
-  "customerName": "Dhar",
-  "text": "Hello how are you doing?"
-}
-```
-
----
-
-## Logs and Container Status
-
-### View Backend Logs
-
-```bash
-docker logs -f branch-backend
-```
-
-### List Running Containers
-
-```bash
-docker ps
-```
-
----
-
-## Stopping the Application
-
-### Stop Containers
-
-```bash
-docker compose down
-```
-
-### Stop Containers and Remove Database Data
-
-```bash
-docker compose down -v
-```
+This repository contains two independent assignments, each documented in its respective folder:
+- **`task1/`** contains the Durable Execution Engine implementation, including design rationale, workflow examples, and recovery behavior.
+- **`task2/`** contains the High-Throughput Fan-Out & Transformation Engine, covering streaming ingestion, concurrency, backpressure, and observability.
+- 
+Each folder includes a dedicated `README.md` with detailed explanations, setup instructions, and relevant implementation notes.
 
 ---
 
 ## Notes
 
-* MongoDB runs inside a Docker container.
-* No local installation of Node.js or MongoDB is required.
+- Both assignments are implemented in **Java** using standard concurrency primitives.
+- No external orchestration frameworks or domain-specific languages were used.
+- All prompts utilized during design and development are included, as requested.
 
 Thank you for taking the time to review this submission.
